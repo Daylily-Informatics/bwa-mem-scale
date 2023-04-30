@@ -97,6 +97,15 @@ int mode_build = 0; /* use this variable only for debugging. now, affect to "sho
 
 #define get_num_seed(start, end, len) ((end) - (start) >= (len) ? ((end) - (start) - (len) + 1) : 0)
 
+static inline void *reallocarray(void *ptr, size_t nmemb, size_t size)
+{
+  if (nmemb > 0 && SIZE_MAX / nmemb < size) {
+    return NULL;
+  }
+  return realloc(ptr, nmemb * size);
+}
+
+
 static inline void *recallocarray(void *ptr, size_t old_n, size_t new_n, size_t size)
 {
 	ptr = reallocarray(ptr, new_n, size);
