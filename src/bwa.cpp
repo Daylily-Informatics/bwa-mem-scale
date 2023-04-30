@@ -501,6 +501,8 @@ char *bwa_idx_infer_prefix(const char *hint)
     }
 }
 
+#define PATH_MAX 4096 // or another value that is appropriate for your system                                                                                                                            
+
 bwt_t *bwa_idx_load_bwt(const char *hint)
 {
     char *tmp, *prefix;
